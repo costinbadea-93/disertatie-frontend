@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {UserService} from "./Services/UserService"
 
 @Component({
   selector: 'app-home',
@@ -8,19 +9,17 @@ import {HttpClient} from "@angular/common/http";
 })
 export class HomeComponent implements OnInit {
 
+  private username : string;
+  private password : string;
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient, private userService:UserService){
   }
 
   ngOnInit(): void {
-    let headers = {};
-    headers['Content-Type'] =  'text/plain;charset=UTF-8';
-    headers['Authorization'] = `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTUyNTI1OTE2MiwiZXhwIjoxNTI1MjYyNzYyfQ.lz_gP5CfK71fG-S9Iu-LrTG1pzEmIBMk5DsuFoPxAPs`;
-    headers['Access-Control-Allow-Origin'] = "*";
-    console.log(headers);
-    this.http.get('http://localhost:9000/event/getEvents', {headers: headers}).subscribe(data => {
-      console.log(data);
-    });
   }
 
+  private loginUser(username: string, password : string) : void {
+    console.log(username, password);
+    this.userService.obtainAccessToken(username,password);
+  }
 }
