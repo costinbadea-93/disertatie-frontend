@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {UserService} from "./Services/UserService"
 
 @Component({
   selector: 'app-home',
@@ -9,17 +7,9 @@ import {UserService} from "./Services/UserService"
 })
 export class HomeComponent implements OnInit {
 
-  private username : string;
-  private password : string;
+  constructor() { }
 
-  constructor(private http: HttpClient, private userService:UserService){
+  ngOnInit() {
   }
 
-  ngOnInit(): void {
-  }
-
-  private loginUser(username: string, password : string) : void {
-    console.log(username, password);
-    this.userService.obtainAccessToken(username,password);
-  }
 }

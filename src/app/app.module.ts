@@ -6,17 +6,20 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { Routes, RouterModule} from "@angular/router";
+import { LoginComponent } from './login/login.component';
+import { UserService } from './login/Services/UserService';
 import { HomeComponent } from './home/home.component';
-import { UserService } from './home/Services/UserService';
 
 const appRoutes: Routes = [
-  { path: '**', component: HomeComponent },
+  { path: '**', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
 ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     HomeComponent
   ],
   imports: [
@@ -26,7 +29,7 @@ const appRoutes: Routes = [
     StorageServiceModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { useHash: true}
     )
   ],
   providers: [UserService],
