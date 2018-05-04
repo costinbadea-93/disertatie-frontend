@@ -4,6 +4,6 @@
 
 
 export class Constants {
-  public static get AUTH_TOKEN_URL(): string { return "http://localhost:9000/users/signin"; };
+  public static get AUTH_TOKEN_URL(): string { return 'http://localhost:9000/users/signin'; }
 
 }

@@ -5,14 +5,17 @@ import { StorageServiceModule} from 'angular-webstorage-service';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { Routes, RouterModule} from "@angular/router";
+import { Routes, RouterModule} from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './login/Services/UserService';
+import { HomeService} from './home/Services/HomeService';
+import { GlobalServiceRequests } from './GlobalServices/GlobalServiceRequests';
 import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
-  { path: '**', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
+  { path: '**', component: LoginComponent },
 ];
 
 
@@ -29,10 +32,12 @@ const appRoutes: Routes = [
     StorageServiceModule,
     RouterModule.forRoot(
       appRoutes,
-      { useHash: true}
-    )
+      {
+        // enableTracing: true,
+        useHash: true
+      })
   ],
-  providers: [UserService],
+  providers: [UserService, HomeService, GlobalServiceRequests],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

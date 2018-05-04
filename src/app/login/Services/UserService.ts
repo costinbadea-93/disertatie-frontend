@@ -8,11 +8,11 @@ import { Constants } from '../Utils/Constants';
 @Injectable()
 export class UserService {
 
-  constructor (private http: HttpClient){
+  constructor (private http: HttpClient) {
   }
 
-  obtainAccessToken(username : string, password : string)  {
-    let url = Constants.AUTH_TOKEN_URL + "?username=" + username + "&password=" + password;
+  obtainAccessToken(username: string, password: string)  {
+    const url = Constants.AUTH_TOKEN_URL + "?username=" + username + "&password=" + password;
     this.http.post(url,{}).subscribe(
       data => {
       sessionStorage.setItem("accessToken", data["value"]);
