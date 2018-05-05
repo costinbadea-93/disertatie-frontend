@@ -10,14 +10,15 @@ import { EventModel } from './Model/eventModel';
 })
 export class HomeComponent implements OnInit {
 
-  private events: any = [];
+  private events: EventModel[] = [];
 
   constructor(private http: HttpClient, private homeService: HomeService) {
-    this.events = this.homeService.getEvents();
   }
 
-
   ngOnInit() {
+    this.homeService.getEvents().subscribe(data => {
+         this.events =  data;
+    });
   }
 
 }

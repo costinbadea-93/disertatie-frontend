@@ -9,7 +9,7 @@ http://www.tooplate.com/view/2092-shelf
 body {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-size: 18px;
-  /*background: url('../img/shelf-bg.jpg');*/
+  background: url('../../assets/img/bg2.png');
   padding: 0 15px;
   overflow-x: hidden;
 }
@@ -20,45 +20,6 @@ a:focus {
   text-decoration: none;
   outline: none;
 }
-h1, h2, h3, h4, h5, h6 { line-height: 1.4; }
-p {
-  line-height: 1.8;
-  margin-bottom: 0;
-}
-
-p, .tm-gallery-item .tm-figcaption { color: #333; }
-.tm-font-thin { font-weight: 300; }
-
-button {
-  cursor: pointer;
-  border: none;
-}
-button:focus { outline: none; }
-
-.tm-btn {
-  display: inline-block;
-  font-size: 1.2rem;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  width: 160px;
-}
-
-.tm-btn-blue {
-  color: white;
-  background-color: #186e9d;
-}
-
-.tm-btn-blue:hover,
-.tm-btn-blue:focus {
-  color: white;
-  background-color: #389fd7;
-}
-
-.tm-btn-gray {
-  color: #186e9d;
-  background-color: #ededed;
-}
 
 .tm-btn-gray:hover,
 .tm-btn-gray:focus {
@@ -67,17 +28,6 @@ button:focus { outline: none; }
 
 .tm-blue-text { color: #186e9d; }
 .tm-green-text { color: #C5F9D0; }
-
-.navbar-toggler {
-  background: rgba(0,0,0,0.5);
-  border: none;
-  border-radius: 0;
-  color: white;
-  display: block;
-  padding: 0.6rem 1rem;
-  margin-left: auto;
-  margin-right: 0;
-}
 
 .container {
   background-color: white;
@@ -186,8 +136,6 @@ button:focus { outline: none; }
 }
 
 .tm-figcaption {
-  padding-top: 15px;
-  padding-bottom: 30px;
   text-align: center;
 }
 
@@ -249,42 +197,8 @@ p.tm-margin-b-p { margin-bottom: 35px; }
   display: inline-block;
 }
 
-.tm-white-bordered-btn:hover,
-.tm-white-bordered-btn:focus {
-  background-color: white;
-}
-
 .tm-fa-6x { font-size: 6em; }
 .tm-h3 { font-size: 1.5rem; }
-
-footer {
-  background-color: rgba(0,0,0,0.8);
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
-
-footer a {
-  color: white;
-}
-
-footer a:hover {
-  color: #FF3;
-}
-
-
-.form-control {
-  border: 1px solid rgba(0, 0, 0, 0.37);
-  border-radius: 0;
-  font-size: 1.2rem;
-  padding: .75rem .75rem;
-}
-.form-control:focus { border-color: #076599; }
-.tm-overflow-auto { overflow: auto; }
-#google-map {
-  height: 360px;
-  width: 100%;
-}
 
 @media (min-width: 576px) {
   .tm-main-content { padding: 75px 50px 70px;	}
