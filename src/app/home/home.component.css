@@ -7,11 +7,7 @@ http://www.tooplate.com/view/2092-shelf
 */
 
 body {
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  background: url('../../assets/img/bg2.png');
-  padding: 0 15px;
-  overflow-x: hidden;
+  background: url('../../assets/img/bg2.png') ;
 }
 
 a, button { transition: all 0.3s ease; }

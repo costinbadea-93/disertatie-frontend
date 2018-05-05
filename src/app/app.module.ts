@@ -4,13 +4,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import { FormsModule } from '@angular/forms';
 
+
 import { AppComponent } from './app.component';
+import {LengthPipe} from './home/Pipes/LengthPipe';
 import { Routes, RouterModule} from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './login/Services/UserService';
 import { HomeService} from './home/Services/HomeService';
 import { GlobalServiceRequests } from './GlobalServices/GlobalServiceRequests';
 import { HomeComponent } from './home/home.component';
+
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,7 +26,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    LengthPipe,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,7 @@ const appRoutes: Routes = [
         useHash: true
       })
   ],
+  exports: [],
   providers: [UserService, HomeService, GlobalServiceRequests],
   bootstrap: [AppComponent]
 })
