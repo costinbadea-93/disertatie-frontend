@@ -3,7 +3,9 @@
  */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Constants } from '../Utils/Constants';
+import { Constants } from '../../GlobalUtils/GlobalConstants/GlobalConstants';
+import {EventModel} from '../../GlobalUtils/GlobalModel/eventModel';
+import {Observable} from '../../../../node_modules/rxjs';
 
 @Injectable()
 export class UserService {
@@ -11,15 +13,8 @@ export class UserService {
   constructor (private http: HttpClient) {
   }
 
-  obtainAccessToken(username: string, password: string)  {
-    const url = Constants.AUTH_TOKEN_URL + "?username=" + username + "&password=" + password;
-    this.http.post(url,{}).subscribe(
-      data => {
-      sessionStorage.setItem("accessToken", data["value"]);
-      console.log(sessionStorage.getItem("accessToken"));
-    },
-      error => {
-        alert("Some error ocured during retrieving auth token");
-    });
+  obtainAccessToken(username: string, password: string):  Observable <any>  {
+    const url = Constants.AUTH_TOKEN_URL + '?username=' + username + '&password=' + password;
+    return this.http.post(url, {});
   }
 }

@@ -4,19 +4,21 @@
 import { Injectable } from '@angular/core';
 import { EventModel } from '../../GlobalUtils/GlobalModel/eventModel';
 import { Constants } from '../../GlobalUtils/GlobalConstants/GlobalConstants';
-import { GlobalServiceRequests} from '../../GlobalUtils/GlobalServices/GlobalServiceRequests';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs';
+import {GlobalServiceRequests} from '../../GlobalUtils/GlobalServices/GlobalServiceRequests';
 
 @Injectable()
-export class HomeService {
+export class EventDetailsService {
 
   constructor (private http: HttpClient, private globalServiceRequest: GlobalServiceRequests) {
   }
 
-  getEvents(): Observable <EventModel[]> {
-    const url = Constants.GET_EVENTS_URL;
-      return this.http.get<EventModel[]>(url, {headers: this.globalServiceRequest.createAuthorizationHeader()});
+  getEvent(id: number): Observable <EventModel> {
+    const url = Constants.GET_SPECIFIC_EVENT_URL + '/' + id;
+    return this.http.get<EventModel>(url, {headers: this.globalServiceRequest.createAuthorizationHeader()});
   }
+
+
 }

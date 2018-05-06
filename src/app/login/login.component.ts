@@ -21,8 +21,11 @@ export class LoginComponent implements OnInit {
 
   private loginUser(username: string, password: string): void {
     try {
-       this.userService.obtainAccessToken(username,password);
-      this.router.navigate(['home']);
+      this.userService.obtainAccessToken(username, password).subscribe(data => {
+          sessionStorage.setItem('accessToken', data['value']);
+          console.log(sessionStorage.getItem('accessToken'));
+          this.router.navigate(['home']);
+      });
     } catch (e) {
       alert('error during authentication');
     }

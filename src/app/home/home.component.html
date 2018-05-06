@@ -8,7 +8,7 @@
   <div class="tm-gallery" >
       <div class="row" >
         <figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item" *ngFor="let event of events">
-          <a href="preview.html">
+          <a (click)="goToEventById(event.id)">
             <div class="tm-gallery-item-overlay">
               <img src="../assets/img/images.jpg" alt="Image" class="img-fluid tm-img-center">
             </div>
