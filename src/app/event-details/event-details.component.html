@@ -8,13 +8,16 @@
       <div class="col-md-6 col-sm-12">
         <h2 class="tm-blue-text tm-margin-b-p">{{event.eventName}}</h2>
         <p class="tm-margin-b-p">{{event.eventDescription}}</p>
-        <p class="tm-blue-text tm-margin-b-s">Categories: <a href="#" class="tm-blue-text">New Story</a>, <a href="#"
-                                                                                                             class="tm-blue-text">Epic</a>,
-          <a href="#" class="tm-blue-text">Popular</a></p>
-        <p class="tm-blue-text tm-margin-b-s">Views: 10,890</p>
-        <p class="tm-blue-text tm-margin-b"> Free place number {{event.freePlacesNumber}}</p>
+        <p class="tm-blue-text tm-margin-b-s">Categories:<a href="#" class="tm-blue-text"> {{event.category}}</a>
+        <p class="tm-blue-text tm-margin-b"> Date: {{event.eventDate | date}}</p>
+        <p class="tm-blue-text tm-margin-b-s">Start Time: {{event.startTime}}</p>
+        <p class="tm-blue-text tm-margin-b"> Free place number: {{event.freePlacesNumber}}</p>
+        <div class="btn-group btn-group-sm">
+          <button type="button" class="btn btn-primary">Apply on event</button>
+        </div>
       </div>
     </section>
+    <hr>
     <app-google-maps [latitude]="event.eventLocation.latitudeValue" [longitude]="event.eventLocation.longitudeValue"></app-google-maps>
     <div class="tm-gallery no-pad-b">
       <div class="row">
