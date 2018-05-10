@@ -17,4 +17,9 @@ export class UserService {
     const url = Constants.AUTH_TOKEN_URL + '?username=' + username + '&password=' + password;
     return this.http.post(url, {});
   }
+
+  getEvents(): Observable <UserModel[]> {
+    const url = Constants.GET_EVENTS_URL;
+    return this.http.get<EventModel[]>(url, {headers: this.globalServiceRequest.createAuthorizationHeader()});
+  }
 }

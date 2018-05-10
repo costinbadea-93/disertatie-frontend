@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     try {
       this.userService.obtainAccessToken(username, password).subscribe(data => {
           sessionStorage.setItem('accessToken', data['value']);
+        this.userService.getUserInformationsByToken
           console.log(sessionStorage.getItem('accessToken'));
           this.router.navigate(['home']);
       });
