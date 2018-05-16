@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from './Services/UserService';
 import {Router} from '@angular/router';
+import {UserModel} from '../GlobalUtils/GlobalModel/userModel'
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  private username: string;
-  private password: string;
+private user : UserModel;
 
   constructor(private http: HttpClient, private userService: UserService, private router: Router) {
   }
@@ -23,9 +23,11 @@ export class LoginComponent implements OnInit {
     try {
       this.userService.obtainAccessToken(username, password).subscribe(data => {
           sessionStorage.setItem('accessToken', data['value']);
-        this.userService.getUserInformationsByToken
-          console.log(sessionStorage.getItem('accessToken'));
-          this.router.navigate(['home']);
+          this.userService.getUserInformationsByToken().subscribe(userData => {
+            this.user =  userData;
+            sessionStorage.setItem('userInfo', JSON.stringify(this.user));
+            this.router.navigate(['home']);
+          });
       });
     } catch (e) {
       alert('error during authentication');

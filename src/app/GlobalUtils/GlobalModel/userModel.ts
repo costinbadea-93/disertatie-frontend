@@ -5,4 +5,5 @@ export class UserModel {
   id: number;
   username: String;
   email: String;
+  roles: String [];
 }

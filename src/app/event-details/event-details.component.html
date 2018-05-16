@@ -13,7 +13,7 @@
         <p class="tm-blue-text tm-margin-b-s">Start Time: {{event.startTime}}</p>
         <p class="tm-blue-text tm-margin-b"> Free place number: {{event.freePlacesNumber}}</p>
         <div class="btn-group btn-group-sm">
-          <button type="button" class="btn btn-primary">Apply on event</button>
+          <button type="button" class="btn btn-primary" (click) = "applyOnEvent(event, event.eventLocation.id)">Apply on event</button>
         </div>
       </div>
     </section>

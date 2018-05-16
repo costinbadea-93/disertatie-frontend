@@ -20,5 +20,10 @@ export class EventDetailsService {
     return this.http.get<EventModel>(url, {headers: this.globalServiceRequest.createAuthorizationHeader()});
   }
 
+  applyOnEvent(userId: number, locationId: number, event: EventModel): Observable<any>{
+    const url = Constants.APPLY_ON_SPECIFIC_EVENT + '?userId=' + userId + '&locationId=' + locationId;
+    return this.http.post<any>(url, event , { headers: this.globalServiceRequest.createAuthorizationHeader()});
+  }
+
 
 }

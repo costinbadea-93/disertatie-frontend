@@ -25,4 +25,13 @@ export class EventDetailsComponent implements OnInit {
     });
   }
 
+  applyOnEvent(event: EventModel, locationId: number) {
+    let userId =  JSON.parse(sessionStorage.getItem('userInfo'))['id'];
+    this.eventDetailsService.applyOnEvent(userId, locationId, event).subscribe(data => {
+      if(event.id == data){
+        alert("Succesfully applyed on event !");
+      }
+    });
+  }
+
 }

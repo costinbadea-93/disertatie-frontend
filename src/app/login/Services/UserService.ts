@@ -4,13 +4,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../GlobalUtils/GlobalConstants/GlobalConstants';
-import {EventModel} from '../../GlobalUtils/GlobalModel/eventModel';
-import {Observable} from '../../../../node_modules/rxjs';
+import { Observable } from '../../../../node_modules/rxjs';
+import { UserModel } from "../../GlobalUtils/GlobalModel/userModel";
+import {GlobalServiceRequests} from "../../GlobalUtils/GlobalServices/GlobalServiceRequests";
 
 @Injectable()
 export class UserService {
 
-  constructor (private http: HttpClient) {
+  constructor (private http: HttpClient, private globalServiceRequest: GlobalServiceRequests) {
   }
 
   obtainAccessToken(username: string, password: string):  Observable <any>  {
@@ -18,8 +19,8 @@ export class UserService {
     return this.http.post(url, {});
   }
 
-  getEvents(): Observable <UserModel[]> {
-    const url = Constants.GET_EVENTS_URL;
-    return this.http.get<EventModel[]>(url, {headers: this.globalServiceRequest.createAuthorizationHeader()});
+  getUserInformationsByToken(): Observable <UserModel> {
+    const url = Constants.GET_USER_INFO;
+    return this.http.get<UserModel>(url, {headers: this.globalServiceRequest.createAuthorizationHeader()});
   }
 }
