@@ -8,6 +8,7 @@ import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs';
 import {GlobalServiceRequests} from '../../GlobalUtils/GlobalServices/GlobalServiceRequests';
+import {EventReservationModel} from "../../GlobalUtils/GlobalModel/eventReservation";
 
 @Injectable()
 export class EventDetailsService {
@@ -20,9 +21,9 @@ export class EventDetailsService {
     return this.http.get<EventModel>(url, {headers: this.globalServiceRequest.createAuthorizationHeader()});
   }
 
-  applyOnEvent(userId: number, locationId: number, event: EventModel): Observable<any>{
-    const url = Constants.APPLY_ON_SPECIFIC_EVENT + '?userId=' + userId + '&locationId=' + locationId;
-    return this.http.post<any>(url, event , { headers: this.globalServiceRequest.createAuthorizationHeader()});
+  applyOnEvent(userId: number, eventId: number, eventReservation: EventReservationModel): Observable<number>{
+    const url = Constants.APPLY_ON_SPECIFIC_EVENT + '?userId=' + userId + '&eventId=' + eventId;
+    return this.http.post<number>(url, eventReservation , { headers: this.globalServiceRequest.createAuthorizationHeader()});
   }
 
 
