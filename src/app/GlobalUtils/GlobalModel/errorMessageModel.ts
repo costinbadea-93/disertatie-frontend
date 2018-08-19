@@ -4,5 +4,6 @@
 export class ErrorMessageModel {
   message: String;
   shouldDisplay: boolean;
-  statusCode : number;
+  statusCode: number;
+  classType: string;
 }

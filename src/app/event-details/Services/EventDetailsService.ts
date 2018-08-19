@@ -26,5 +26,10 @@ export class EventDetailsService {
     return this.http.post<number>(url, eventReservation , { headers: this.globalServiceRequest.createAuthorizationHeader()});
   }
 
+  rateEvent(eventId: number): Observable<Event> {
+    const url = Constants.RATE_EVENT + '/'  + eventId;
+    return this.http.post<Event>(url, {} , { headers: this.globalServiceRequest.createAuthorizationHeader()});
+  }
+
 
 }
