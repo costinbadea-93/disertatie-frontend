@@ -1,0 +1,18 @@
+<header class="tm-site-header">
+  <h1 class="tm-site-name">Shelf</h1>
+  <p class="tm-site-description">Your Online Bookstore</p>
+
+  <nav class="navbar navbar-expand-md tm-main-nav-container">
+    <div class="collapse navbar-collapse tm-main-nav" id="tmMainNav">
+      <ul class="nav nav-fill tm-main-nav-ul">
+        <!--<li class="nav-item"><a [ngClass]="selected" class="nav-link" [routerLink]="['/home']" href="index.html">Home</a></li>-->
+        <!--<li class="nav-item"><a [ngClass]="selected" class="nav-link" [routerLink]="['/home']">Catalogs</a></li>-->
+        <!--<li class="nav-item"><a class="nav-link" href="#">Awards</a></li>-->
+        <!--<li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>-->
+        <!--<li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>-->
+        <li *ngFor="let itemMenu of menuItems" class="nav-item"><a class="nav-link">{{itemMenu}}</a></li>
+      </ul>
+    </div>
+  </nav>
+
+</header>

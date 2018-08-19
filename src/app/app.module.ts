@@ -17,7 +17,7 @@ import {HomeComponent} from './home/home.component';
 import {EventDetailsComponent} from './event-details/event-details.component';
 import { GoogleMapsComponent } from './Google Services/google-maps/google-maps.component';
 import {AgmCoreModule} from '@agm/core';
-
+import { GlobalHeaderComponent } from './GlobalUtils/GlobalComponents/global-header/global-header.component';
 
 
 const appRoutes: Routes = [
@@ -36,6 +36,7 @@ const appRoutes: Routes = [
     LengthPipe,
     EventDetailsComponent,
     GoogleMapsComponent,
+    GlobalHeaderComponent,
   ],
   imports: [
     BrowserModule,

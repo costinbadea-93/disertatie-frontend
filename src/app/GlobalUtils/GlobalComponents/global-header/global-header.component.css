@@ -1,0 +1,122 @@
+
+body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  /*background: url('../img/shelf-bg.jpg');*/
+  padding: 0 15px;
+  overflow-x: hidden;
+}
+
+a, button { transition: all 0.3s ease; }
+a:hover,
+a:focus {
+  text-decoration: none;
+  outline: none;
+}
+h1, h2, h3, h4, h5, h6 { line-height: 1.4; }
+p {
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+
+.navbar-toggler {
+  background: rgba(0,0,0,0.5);
+  border: none;
+  border-radius: 0;
+  color: white;
+  display: block;
+  padding: 0.6rem 1rem;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.container {
+  background-color: white;
+  max-width: 1120px;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.tm-site-header {
+  background: url('../../Images/menuBackground1.jpg') no-repeat;
+  background-size: cover;
+  height: 300px;
+  padding: 60px 80px;
+  position: relative;
+  border-bottom: 10px solid #076599;
+}
+
+.tm-main-nav-ul { flex-flow: column; }
+
+.tm-main-nav-container {
+  position: fixed;
+  width: 100%;
+  top: 5px;
+  right: 10px;
+  width: 200px;
+  z-index: 1000;
+}
+
+.tm-main-nav { background-color: rgba(0,0,0,0.5); }
+
+.tm-main-nav .nav-link {
+  color: white;
+  font-size: 1.3rem;
+  padding: 15px 20px;
+}
+
+.tm-main-nav .nav-link.active,
+.tm-main-nav .nav-link:hover,
+.tm-main-nav .nav-link:focus {
+  color: #9AC9F7;
+}
+
+@media (min-width: 576px) {
+  .tm-main-content { padding: 75px 50px 70px;	}
+  .tm-main-content.no-pad-b { padding: 75px 50px 0; }
+  .tm-gallery { max-width: 500px;	}
+  .tm-highlight { padding: 40px; }
+  .tm-highlight-w-icon { flex-flow: row; }
+  .tm-highlight-icon { padding: 20px 50px 0 0; }
+}
+
+@media (min-width: 768px) {
+  .tm-main-nav-ul {
+    flex-flow: row;
+    width: 100%;
+  }
+  .tm-main-nav-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: auto;
+    top: auto;
+    padding: 0;
+    width: 100%;
+  }
+  .tm-main-nav .nav-link { padding: 10px 15px; }
+  .tm-gallery { max-width: 760px;	}
+  .tm-highlight { padding: 50px 100px; }
+  .tm-small-pad { padding: 40px 35px; }
+  .tm-img-center-sm {	margin-left: 0;	}
+}
+
+@media (min-width: 992px) {
+  .tm-site-header { height: 400px; }
+  .tm-main-nav .nav-link { padding: 15px 20px; }
+  .tm-gallery { max-width: none; }
+}
+
+@media (min-width: 1200px) {
+  .container { max-width: 1120px; }
+  .tm-site-header { height: 500px; }
+  .tm-main-nav .nav-link { padding: 25px; }
+}
+
+@media (max-height: 360px) {
+  .tm-main-nav .nav-link {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+}
