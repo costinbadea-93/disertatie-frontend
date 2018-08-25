@@ -4,11 +4,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Router} from "@angular/router";
+import {ErrorMessageModel} from '../GlobalModel/errorMessageModel';
 
 @Injectable()
 export class GlobalServiceRequests {
 
   static headers: any = {};
+  public defaultErrorClasses: String = 'alert alert-dismissible fade-in ';
 
   constructor (private http: HttpClient, private router: Router) {
   }
@@ -17,6 +19,15 @@ export class GlobalServiceRequests {
     GlobalServiceRequests.headers['Authorization'] =  'Bearer ' +
       sessionStorage.getItem('accessToken');
     return GlobalServiceRequests.headers;
+  }
+
+  distplayErrorObject (message: String, shouldDisplay: boolean, statusCode: number, classType: string): ErrorMessageModel {
+    const returnedError = new ErrorMessageModel();
+    returnedError.message = message;
+    returnedError.shouldDisplay = shouldDisplay;
+    returnedError.statusCode = statusCode;
+    returnedError.classType = this.defaultErrorClasses + classType;
+    return returnedError;
   }
 
   validateRequestTokenExpired(errorMessageObject) {

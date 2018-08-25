@@ -9,6 +9,7 @@
     >
       {{itemMenu}}
     </a>
+    <a class="pull-right" *ngIf="checkIfAdminUser()" [routerLink]="'/admin'">Administrate your app</a>
     <a style="font-size:15px;"  class="icon" (click)="toggleNavbar(expandLink)">&#9776;</a>
   </div>
 

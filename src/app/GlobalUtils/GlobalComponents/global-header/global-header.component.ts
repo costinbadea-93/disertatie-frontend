@@ -11,6 +11,7 @@ export class GlobalHeaderComponent implements OnInit {
   @Input() selected: string;
   public menuItems  = ['Home', 'AboutUs'];
   public currentRoute: String;
+  public isAdmin = false;
   constructor(private router: Router) {}
 
   toggleNavbar(expandLink) {
@@ -20,6 +21,10 @@ export class GlobalHeaderComponent implements OnInit {
     } else {
       expandLink.classList.add('responsive');
     }
+  }
+
+  checkIfAdminUser() {
+    return JSON.parse(sessionStorage.getItem('userInfo'))['roles'].includes('ROLE_ADMIN');
   }
 
   ngOnInit() {

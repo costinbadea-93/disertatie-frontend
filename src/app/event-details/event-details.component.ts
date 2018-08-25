@@ -16,7 +16,6 @@ export class EventDetailsComponent implements OnInit {
 
   public event: EventModel;
   public numberOfPlacesOnEvents: String = '1';
-  public defaultErrorClasses: String = 'alert alert-dismissible fade-in ';
   public eventReservation: EventReservationModel =  new EventReservationModel();
   public errorOnApply: ErrorMessageModel = new ErrorMessageModel();
   public errorOnRate: ErrorMessageModel =  new ErrorMessageModel();
@@ -55,11 +54,7 @@ export class EventDetailsComponent implements OnInit {
         console.log(result);
     }, error => {
         this.globalService.validateRequestTokenExpired(error);
-        this.errorOnApply.message = error.error;
-        this.errorOnApply.shouldDisplay = true;
-        this.errorOnApply.statusCode =  error.status;
-        this.errorOnApply.classType = this.defaultErrorClasses + 'alert-warning';
-        console.log(this.errorOnApply);
+        this.errorOnApply = this.globalService.distplayErrorObject( error.error, true, error.status, 'alert-warning');
     });
   }
 
@@ -75,30 +70,21 @@ export class EventDetailsComponent implements OnInit {
       sessionStorage.setItem('ratedEvents', JSON.stringify(alreadyRatedEvents));
     } else {
       if (JSON.parse(sessionStorage.getItem('ratedEvents')).includes(eventId)) {
-        this.errorOnRate = this.distplayErrorObject(
+        this.errorOnRate = this.globalService.distplayErrorObject(
           'You have already rate this event', true,
-          null, this.defaultErrorClasses + 'alert-warning'
+          null, 'alert-warning'
         );
       } else {
         const currentRatedEvents = JSON.parse(sessionStorage.getItem('ratedEvents'));
         currentRatedEvents.push(eventId);
         console.log(currentRatedEvents);
         sessionStorage.setItem('ratedEvents', JSON.stringify(currentRatedEvents));
-        this.errorOnRate = this.distplayErrorObject(
+        this.errorOnRate = this.globalService.distplayErrorObject(
           'You have successfully rate this event', true,
-          null, this.defaultErrorClasses + 'alert-success'
+          null, 'alert-success'
         );
       }
     }
-  }
-
-  distplayErrorObject (message: String, shouldDisplay: boolean, statusCode: number, classType: string): ErrorMessageModel {
-   const returnedError = new ErrorMessageModel();
-   returnedError.message = message;
-   returnedError.shouldDisplay = shouldDisplay;
-   returnedError.statusCode = statusCode;
-   returnedError.classType = classType;
-   return returnedError;
   }
 
   rateEvent(eventId: number) {
