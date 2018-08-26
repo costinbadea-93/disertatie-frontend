@@ -1,16 +1,22 @@
-<header class="tm-site-header">
-  <h1 class="tm-site-name">Shelf</h1>
-  <p class="tm-site-description">Your Online Bookstore</p>
-
-  <div class="topnav" #expandLink id="myTopnav">
-    <a *ngFor="let itemMenu of menuItems"
-       [routerLink]="'/' + itemMenu.toLocaleLowerCase()"
-       [ngClass]="{'active': itemMenu.toLocaleLowerCase() === currentRoute }"
-    >
-      {{itemMenu}}
-    </a>
-    <a class="pull-right" *ngIf="checkIfAdminUser()" [routerLink]="'/admin'">Administrate your app</a>
-    <a style="font-size:15px;"  class="icon" (click)="toggleNavbar(expandLink)">&#9776;</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Start Bootstrap</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active" *ngFor="let itemMenu of menuItems"
+            [ngClass]="{'active': itemMenu.toLocaleLowerCase() === currentRoute }">
+          <a class="nav-link" [routerLink]="'/' + itemMenu.toLocaleLowerCase()">{{itemMenu}}
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item active" *ngFor="let itemMenu of menuItems"
+            [ngClass]="{'active': itemMenu.toLocaleLowerCase() === currentRoute }">
+          <a class="nav-link" *ngIf="checkIfAdminUser()" [routerLink]="'/admin'">Administrate your app</a>
+        </li>
+      </ul>
+    </div>
   </div>
-
-</header>
+</nav>

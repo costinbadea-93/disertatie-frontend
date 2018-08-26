@@ -1,22 +1,21 @@
 <app-global-header [selected]='slelectedMenu'></app-global-header>
-<div class="tm-main-content">
-  <header>
-    <h2 class="tm-main-title">Welcome to our Events site</h2>
-  </header>
+<div class="container">
+  <!-- Page Heading -->
+  <h1 class="my-4">Page Heading
+    <small>Secondary Text</small>
+  </h1>
 
-  <p>Shelf HTML template is provided by Tooplate. Please tell your friends about it. Thank you. Images are from Unsplash website. In tincidunt metus sed justo tincidunt sollicitudin. Curabitur magna tellus, condimentum vitae consectetur id, elementum sit amet erat.</p>
-
-  <div class="tm-gallery" >
-      <div class="row" >
-        <figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item" *ngFor="let event of events">
-          <a (click)="goToEventById(event.id)">
-            <div class="tm-gallery-item-overlay">
-              <img src="../assets/img/images.jpg" alt="Image" class="img-fluid tm-img-center">
-            </div>
-            <p class="tm-figcaption">{{event.eventName}}</p>
-            <p class="tm-figcaption">{{event.eventDescription | lengthPipe}}</p>
-          </a>
-        </figure>
+  <div class="row">
+    <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let event of events">
+      <div class="card h-100">
+        <a (click)="goToEventById(event.id)"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a (click)="goToEventById(event.id)">{{event.eventName}}</a>
+          </h4>
+          <p class="card-text">{{event.eventDescription | lengthPipe}}</p>
+        </div>
       </div>
     </div>
+  </div>
 </div>
