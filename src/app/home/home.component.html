@@ -1,17 +1,17 @@
 <app-global-header [selected]='slelectedMenu'></app-global-header>
 <div class="container">
   <!-- Page Heading -->
-  <h1 class="my-4">Page Heading
-    <small>Secondary Text</small>
+  <h1 class="my-4">Find here your
+    <small>favourite events</small>
   </h1>
 
   <div class="row">
     <div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let event of events">
       <div class="card h-100">
-        <a (click)="goToEventById(event.id)"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="javascript:void(0)" (click)="goToEventById(event.id)"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
-            <a (click)="goToEventById(event.id)">{{event.eventName}}</a>
+            <a href="javascript:void(0)" (click)="goToEventById(event.id)">{{event.eventName}}</a>
           </h4>
           <p class="card-text">{{event.eventDescription | lengthPipe}}</p>
         </div>
@@ -19,3 +19,4 @@
     </div>
   </div>
 </div>
+<app-global-footer></app-global-footer>

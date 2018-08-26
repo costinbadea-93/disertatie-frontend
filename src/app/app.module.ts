@@ -25,10 +25,13 @@ import { AddEventsModalComponent } from './AadminEventsModule/add-events-modal/a
 import { AddEventsLocationModalComponent } from './AadminEventsModule/add-events-location-modal/add-events-location-modal.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import {AdminDashboardService} from './AadminEventsModule/admin-dashboard/Services/AdminDashboardService';
+import { GlobalFooterComponent } from './GlobalUtils/GlobalComponents/global-footer/global-footer.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent},
   {path: 'eventDetails/:id', component: EventDetailsComponent},
   {path: 'admin', component: AdminDashboardComponent},
@@ -49,6 +52,8 @@ const appRoutes: Routes = [
     AdminDashboardComponent,
     AddEventsModalComponent,
     AddEventsLocationModalComponent,
+    GlobalFooterComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

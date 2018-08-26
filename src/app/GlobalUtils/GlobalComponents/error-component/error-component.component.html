@@ -1,5 +1,6 @@
 <div [className]="errorObject.classType"  *ngIf="errorObject.shouldDisplay">
   <a class="close" data-dismiss="alert" (click)="dismissErrorMessage(errorObject)"
      aria-label="close">&times;</a>
-  <strong>Warning!</strong> {{errorObject.message}}
+  <strong>Message!</strong> {{errorObject.message}}
+  <strong *ngIf="errorObject.link">Go back to <a href="javascript:void(0)" [routerLink]="errorObject.link">login</a> page</strong>
 </div>

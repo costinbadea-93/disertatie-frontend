@@ -21,12 +21,13 @@ export class GlobalServiceRequests {
     return GlobalServiceRequests.headers;
   }
 
-  distplayErrorObject (message: String, shouldDisplay: boolean, statusCode: number, classType: string): ErrorMessageModel {
+  distplayErrorObject (message: String, shouldDisplay: boolean, statusCode: number, classType: string, link?: string): ErrorMessageModel {
     const returnedError = new ErrorMessageModel();
     returnedError.message = message;
     returnedError.shouldDisplay = shouldDisplay;
     returnedError.statusCode = statusCode;
     returnedError.classType = this.defaultErrorClasses + classType;
+    returnedError.link = link || null;
     return returnedError;
   }
 

@@ -10,6 +10,7 @@ export class Constants {
   public static get ADD_LOCATION(): string { return 'http://localhost:9000/eventLocation/addEventLocation'; }
   public static get ADD_EVENT(): string { return 'http://localhost:9000/event/addEvent'; }
   public static get GET_LOCATIONS(): string { return 'http://localhost:9000/eventLocation/getLocations'; }
+  public static get REGISTER_USER(): string { return 'http://localhost:9000/users/signup'; }
 
   public static get DATEPICKER_OPTIONS(): DatepickerOptions {
     const yesterday = new Date();

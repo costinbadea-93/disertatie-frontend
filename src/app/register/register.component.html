@@ -1,0 +1,19 @@
+<body>
+<div class="container">
+  <div class="row">
+    <div class="login">
+      <div class="login-triangle"></div>
+
+      <h2 class="login-header">Feel you information in order to register new account</h2>
+      <form class="login-container">
+        <p><input [(ngModel)]="username" type="text" placeholder="Username" name="username"></p>
+        <p><input [(ngModel)]="email" type="email" placeholder="Email" name="Email"></p>
+        <p><input [(ngModel)]="password" type="password" placeholder="Password" name="password"></p>
+        <p><input [(ngModel)]="retypedPassword" type="password" placeholder="Retype pssword" name="password"></p>
+        <app-error-component [errorObject]="errorOnRegister"></app-error-component>
+        <p><input (click)="registerUser(username,email,password, retypedPassword)" type="submit" value="Register"></p>
+      </form>
+    </div>
+  </div>
+</div>
+</body>

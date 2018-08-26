@@ -6,4 +6,5 @@ export class ErrorMessageModel {
   shouldDisplay: boolean;
   statusCode: number;
   classType: string;
+  link: String;
 }
