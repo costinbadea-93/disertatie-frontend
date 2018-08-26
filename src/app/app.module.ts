@@ -21,8 +21,10 @@ import {AgmCoreModule} from '@agm/core';
 import { GlobalHeaderComponent } from './GlobalUtils/GlobalComponents/global-header/global-header.component';
 import { ErrorComponentComponent } from './GlobalUtils/GlobalComponents/error-component/error-component.component';
 import { AdminDashboardComponent } from './AadminEventsModule/admin-dashboard/admin-dashboard.component';
-import { AddEventsModalComponent } from './GlobalUtils/GlobalComponents/add-events-modal/add-events-modal.component';
-import { AddEventsLocationComponent } from './GlobalUtils/GlobalComponents/add-events-location/add-events-location.component';
+import { AddEventsModalComponent } from './AadminEventsModule/add-events-modal/add-events-modal.component';
+import { AddEventsLocationModalComponent } from './AadminEventsModule/add-events-location-modal/add-events-location-modal.component';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import {AdminDashboardService} from './AadminEventsModule/admin-dashboard/Services/AdminDashboardService';
 
 
 const appRoutes: Routes = [
@@ -46,7 +48,7 @@ const appRoutes: Routes = [
     ErrorComponentComponent,
     AdminDashboardComponent,
     AddEventsModalComponent,
-    AddEventsLocationComponent,
+    AddEventsLocationModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,8 +56,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     StorageServiceModule,
     NgDatepickerModule,
+    GooglePlaceModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBUpn9RuRVAWBKjeaTeBIughNIaYhVTj_0'
+      apiKey: 'AIzaSyA9L-cEPyXEmM9vsEUKahex9N_9QYe4o_k'
     }),
     RouterModule.forRoot(
       appRoutes,
@@ -65,7 +68,7 @@ const appRoutes: Routes = [
       })
   ],
   exports: [],
-  providers: [UserService, HomeService, EventDetailsService, GlobalServiceRequests],
+  providers: [UserService, HomeService, EventDetailsService, GlobalServiceRequests, AdminDashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

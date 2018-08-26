@@ -1,0 +1,43 @@
+<div class="add_events_modal">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addEventModal">Add event</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addEventModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Enter your event information</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+          <input type="text" class="form-control" [(ngModel)]="eventName" aria-describedby="emailHelp" placeholder="Event name">
+          <hr/>
+          <input type="text" class="form-control" [(ngModel)]="eventDescription" aria-describedby="emailHelp" placeholder="Event description">
+          <hr/>
+          <ng-datepicker [options]="options" [(ngModel)]="eventDate"></ng-datepicker>
+          <hr/>
+          <input type="text" class="form-control" [(ngModel)]="eventStartTime" aria-describedby="emailHelp" placeholder="Event start time">
+          <hr/>
+          <select (ngModelChange)="setLocation($event)" [(ngModel)]="selectedLocation"
+                  class="form-control" id="sel1">
+            <option *ngFor="let location of locations" [ngValue]="location.id">{{location.locationAddress}}</option>
+          </select>
+          <hr/>
+          <input type="number" class="form-control" [(ngModel)]="nrOfPlaces" aria-describedby="emailHelp" placeholder="Number of places assigned">
+          <hr/>
+          <input type="text" class="form-control" [(ngModel)]="category" aria-describedby="emailHelp" placeholder="Category">
+        </div>
+        <app-error-component [errorObject]="errorOnAddEvent"></app-error-component>
+        <div class="modal-footer">
+          <button type="button" (click)="addEvent(eventName, eventDescription, eventDate, eventStartTime, nrOfPlaces, category, selectedLocation)" class="btn btn-default pull-left">Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

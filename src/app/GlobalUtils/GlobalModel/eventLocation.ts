@@ -1,4 +1,6 @@
 export class EventLocationModel {
-  latitudeValue: number;
-  longitudeValue: number;
+  id;
+  locationAddress = '';
+  latitudeValue = 0;
+  longitudeValue = 0;
 }

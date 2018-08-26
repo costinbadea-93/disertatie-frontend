@@ -14,7 +14,7 @@ import {GlobalServiceRequests} from '../GlobalUtils/GlobalServices/GlobalService
 })
 export class EventDetailsComponent implements OnInit {
 
-  public event: EventModel;
+  public event: EventModel = new EventModel();
   public numberOfPlacesOnEvents: String = '1';
   public eventReservation: EventReservationModel =  new EventReservationModel();
   public errorOnApply: ErrorMessageModel = new ErrorMessageModel();
@@ -35,7 +35,7 @@ export class EventDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.eventDetailsService.getEvent(params.id).subscribe(data => {
         this.event = data;
-        console.log(this.event);
+        console.log(new Date(this.event.eventDate));
       });
     });
   }
@@ -68,6 +68,10 @@ export class EventDetailsComponent implements OnInit {
       const alreadyRatedEvents = [];
       alreadyRatedEvents.push(eventId);
       sessionStorage.setItem('ratedEvents', JSON.stringify(alreadyRatedEvents));
+      this.errorOnRate = this.globalService.distplayErrorObject(
+        'You have successfully rate this event', true,
+        null, 'alert-success'
+      );
     } else {
       if (JSON.parse(sessionStorage.getItem('ratedEvents')).includes(eventId)) {
         this.errorOnRate = this.globalService.distplayErrorObject(
