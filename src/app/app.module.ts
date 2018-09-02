@@ -27,6 +27,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import {AdminDashboardService} from './AadminEventsModule/admin-dashboard/Services/AdminDashboardService';
 import { GlobalFooterComponent } from './GlobalUtils/GlobalComponents/global-footer/global-footer.component';
 import { RegisterComponent } from './register/register.component';
+import { ReviewComponentComponent } from './GlobalUtils/GlobalComponents/review-component/review-component.component';
 
 
 const appRoutes: Routes = [
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
     AddEventsLocationModalComponent,
     GlobalFooterComponent,
     RegisterComponent,
+    ReviewComponentComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,10 @@ import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs';
 import {GlobalServiceRequests} from '../../GlobalUtils/GlobalServices/GlobalServiceRequests';
-import {EventReservationModel} from "../../GlobalUtils/GlobalModel/eventReservation";
+import {EventReservationModel} from '../../GlobalUtils/GlobalModel/eventReservation';
+import {EventReview} from '../../GlobalUtils/GlobalModel/eventReview';
+import {UserModel} from '../../GlobalUtils/GlobalModel/userModel';
+import {D} from '@angular/core/src/render3';
 
 @Injectable()
 export class EventDetailsService {
@@ -31,5 +34,27 @@ export class EventDetailsService {
     return this.http.post<Event>(url, {} , { headers: this.globalServiceRequest.createAuthorizationHeader()});
   }
 
+  getEventReview(id: number): Observable <EventReview[]> {
+    const url = Constants.EVENT_REVIEWS + '/' + id;
+    const user: UserModel =  JSON.parse(sessionStorage.getItem('userInfo'));
+    return this.http.post<EventReview[]>(url, user, {headers: this.globalServiceRequest.createAuthorizationHeader()});
+  }
 
+  addReview(text: string, eventId: number): Observable <EventReview> {
+    const url = Constants.ADD_REVIEWS;
+    const user: UserModel =  JSON.parse(sessionStorage.getItem('userInfo'));
+    const review: EventReview =  new EventReview();
+    review.reviewText =  text;
+    review.eventId = eventId;
+    review.reviewDate = new Date().toDateString();
+    review.username =  user.username;
+
+    return this.http.post<EventReview>(url, {review: review, user: user}, {headers: this.globalServiceRequest.createAuthorizationHeader()});
+  }
+
+  deleteReview(id: number): Observable <any> {
+    const url = Constants.DELETE_REVIEW + '/' + id;
+    const user: UserModel =  JSON.parse(sessionStorage.getItem('userInfo'));
+    return this.http.post<any>(url, user,{headers: this.globalServiceRequest.createAuthorizationHeader()});
+  }
 }

@@ -35,6 +35,27 @@
     <app-google-maps [latitude]="event.eventLocation.latitudeValue"
                      [longitude]="event.eventLocation.longitudeValue"></app-google-maps>
     <hr>
+    <div class="review container">
+      <app-review-component [reviewsList]="eventsReviews" [isAdmin]="isAdmin"></app-review-component>
+    </div>
+    <div class="addreview container">
+      <div class="col-sm-2"></div>
+      <button class="btn btn-primary" (click)="changeReviewStatus()" *ngIf="!showReviewBox">Add your review</button>
+      <div class="row" *ngIf="showReviewBox">
+        <button class="btn btn-primary" (click)="addReview()">Save review</button>
+        <div class="col-sm-1"></div>
+        <button class="btn btn-primary" (click)="changeReviewStatus()">Close Box</button>
+      </div>
+
+      <div class="form-group" *ngIf="showReviewBox">
+        <label for="comment">Comment:</label>
+        <textarea class="form-control" rows="5" id="comment" [(ngModel)]="reviewText"></textarea>
+        <app-error-component [errorObject]="errorOnAddReview"></app-error-component>
+      </div>
+      <br>
+      <hr>
+      <div class="col-sm-2"></div>
+    </div>
     <div class="tm-gallery no-pad-b">
       <div class="row">
         <figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item mb-5">

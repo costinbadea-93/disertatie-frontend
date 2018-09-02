@@ -5,8 +5,8 @@ import {RoleModel} from './roleModel';
  */
 export class UserModel {
   id: number;
-  username: String;
-  password: String;
-  email: String;
+  username: string;
+  password: string;
+  email: string;
   roles: Array<RoleModel> = [];
 }

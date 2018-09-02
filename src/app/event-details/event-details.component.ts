@@ -5,6 +5,7 @@ import {EventModel} from '../GlobalUtils/GlobalModel/eventModel';
 import {EventReservationModel} from '../GlobalUtils/GlobalModel/eventReservation';
 import {ErrorMessageModel} from '../GlobalUtils/GlobalModel/errorMessageModel';
 import {GlobalServiceRequests} from '../GlobalUtils/GlobalServices/GlobalServiceRequests';
+import {EventReview} from '../GlobalUtils/GlobalModel/eventReview';
 // import {GoogleMaps} from '../Google Services/google-maps';
 
 @Component({
@@ -15,10 +16,12 @@ import {GlobalServiceRequests} from '../GlobalUtils/GlobalServices/GlobalService
 export class EventDetailsComponent implements OnInit {
 
   public event: EventModel = new EventModel();
+  public eventsReviews: EventReview[];
   public numberOfPlacesOnEvents: String = '1';
   public eventReservation: EventReservationModel =  new EventReservationModel();
   public errorOnApply: ErrorMessageModel = new ErrorMessageModel();
   public errorOnRate: ErrorMessageModel =  new ErrorMessageModel();
+  public errorOnAddReview: ErrorMessageModel =  new ErrorMessageModel();
 
   public numberOfPlaces = [
     {id: 1, value: '1'},
@@ -28,14 +31,22 @@ export class EventDetailsComponent implements OnInit {
   ];
 
 
+  public showReviewBox = false;
+  public reviewText: string = '';
+  public isAdmin: boolean;
+
+
   constructor(private route: ActivatedRoute, public eventDetailsService: EventDetailsService, public globalService: GlobalServiceRequests) {
   }
 
   ngOnInit() {
+    this.isAdmin = this.globalService.checkIfAdminUser();
     this.route.params.subscribe(params => {
       this.eventDetailsService.getEvent(params.id).subscribe(data => {
         this.event = data;
-        console.log(new Date(this.event.eventDate));
+        this.eventDetailsService.getEventReview(params.id).subscribe(reviwes => {
+        this.eventsReviews = reviwes;
+        });
       });
     });
   }
@@ -97,4 +108,27 @@ export class EventDetailsComponent implements OnInit {
     });
   }
 
+  changeReviewStatus() {
+    this.showReviewBox = !this.showReviewBox;
+    console.log(this.showReviewBox);
+  }
+
+  addReview () {
+    if (this.reviewText === '') {
+      this.errorOnAddReview = this.globalService.distplayErrorObject(
+        'Please enter a valid text', true,
+        null, 'alert-warning'
+      );
+      return;
+    }
+      this.eventDetailsService.addReview(this.reviewText, this.event.id).subscribe(
+        data => {
+            this.eventsReviews.push(data);
+        },
+        error =>  {
+          this.errorOnAddReview = this.globalService.distplayErrorObject(error.error.message, true, error.error.status, 'alert-warning'
+          );
+        }
+      );
+  }
 }

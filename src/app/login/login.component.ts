@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         });
       },
       error => {
-        this.errorOnLogin = this.globalService.distplayErrorObject(error.error.message, true, error.error.status, 'alert-sucess');
+        this.errorOnLogin = this.globalService.distplayErrorObject(error.error.message, true, error.error.status, 'alert-warning');
       });
   }
 }

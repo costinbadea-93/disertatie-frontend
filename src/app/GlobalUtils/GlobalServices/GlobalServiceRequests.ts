@@ -40,4 +40,8 @@ export class GlobalServiceRequests {
     }
   }
 
+  checkIfAdminUser() {
+    return JSON.parse(sessionStorage.getItem('userInfo'))['roles'].includes('ROLE_ADMIN');
+  }
+
 }
