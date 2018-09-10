@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DatepickerOptions} from 'ng2-datepicker';
 import {Constants} from '../../GlobalUtils/GlobalConstants/GlobalConstants';
 import {EventLocationModel} from '../../GlobalUtils/GlobalModel/eventLocation';
@@ -6,6 +6,8 @@ import {AdminDashboardService} from '../admin-dashboard/Services/AdminDashboardS
 import {e} from '@angular/core/src/render3';
 import {ErrorMessageModel} from '../../GlobalUtils/GlobalModel/errorMessageModel';
 import {GlobalServiceRequests} from '../../GlobalUtils/GlobalServices/GlobalServiceRequests';
+import {EventModel} from '../../GlobalUtils/GlobalModel/eventModel';
+import {HomeService} from '../../home/Services/HomeService';
 
 @Component({
   selector: 'app-add-events-modal',
@@ -19,6 +21,9 @@ export class AddEventsModalComponent implements OnInit {
   public selectedLocation: EventLocationModel;
   public errorOnAddEvent =  new ErrorMessageModel();
 
+  @Output()
+  public updateEvents = new EventEmitter();
+
   public eventName: string;
   public eventDescription: string;
   public eventDate: string;
@@ -27,7 +32,7 @@ export class AddEventsModalComponent implements OnInit {
   public category: string;
 
 
-  constructor(public adminDashboardService: AdminDashboardService, public globalService: GlobalServiceRequests) { }
+  constructor(public adminDashboardService: AdminDashboardService, public globalService: GlobalServiceRequests, public homeService: HomeService) { }
 
   ngOnInit() {
     this.options = Constants.DATEPICKER_OPTIONS;
@@ -47,8 +52,11 @@ export class AddEventsModalComponent implements OnInit {
     this.adminDashboardService.addEvent(eventName, eventDescription, eventDate, eventStartTime,
       numberOfPlacesAssigned, category, selectedLocation).subscribe( data => {
           this.errorOnAddEvent = this.globalService.distplayErrorObject(
-            'You have successfully add location',
+            'You have successfully add Event',
             true, null, 'alert-success');
+        this.homeService.getEvents().subscribe(events => {
+          this.updateEvents.emit(events['content']);
+        });
         },
         error => {
           this.errorOnAddEvent = this.globalService.distplayErrorObject(

@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  private events: EventModel[] = [];
+  public events: EventModel[] = [];
   public slelectedMenu: String = 'active';
 
   constructor(private http: HttpClient, private router: Router, private homeService: HomeService) {

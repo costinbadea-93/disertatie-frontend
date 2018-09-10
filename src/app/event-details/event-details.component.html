@@ -53,20 +53,10 @@
         <app-error-component [errorObject]="errorOnAddReview"></app-error-component>
       </div>
       <br>
-      <hr>
       <div class="col-sm-2"></div>
     </div>
-    <div class="tm-gallery no-pad-b">
-      <div class="row">
-        <figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item mb-5">
-          <a href="preview.html">
-            <div class="tm-gallery-item-overlay">
-              <img src="../assets/img/images.jpg" alt="Image" class="img-fluid tm-img-center">
-            </div>
-            <p class="tm-figcaption no-pad-b">Suspendisse suscipit</p>
-          </a>
-        </figure>
-      </div>
-    </div>
+    <h3>Best rated events:</h3>
+    <hr>
+    <app-top-rated-events></app-top-rated-events>
   </div>
 </div>

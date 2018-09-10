@@ -7,13 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active" *ngFor="let itemMenu of menuItems"
-            [ngClass]="{'active': itemMenu.toLocaleLowerCase() === currentRoute }">
-          <a class="nav-link" [routerLink]="'/' + itemMenu.toLocaleLowerCase()">{{itemMenu}}
+            [ngClass]="{'active': itemMenu.route === currentRoute }">
+          <a class="nav-link" [routerLink]="'/' + itemMenu.route">{{itemMenu.value}}
             <span class="sr-only">(current)</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" *ngIf="checkIfAdminUser()" [routerLink]="'/admin'">Administrate your app</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logutUser()">Logout</a>
         </li>
       </ul>
     </div>

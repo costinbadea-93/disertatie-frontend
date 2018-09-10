@@ -1,0 +1,15 @@
+<app-global-header></app-global-header>
+<div class="container">
+  <!-- Team Members Row -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="my-4">Those are the best rated events</h2>
+    </div>
+    <div class="col-lg-4 col-sm-6 text-center mb-4" *ngFor="let res of bestRatedEventsList">
+      <img class="rounded-circle img-fluid d-block mx-auto" src="http://placehold.it/200x200" alt="">
+      <h3>{{res.event.eventName}}</h3> <small>{{res.event.eventDate | date}}</small>
+      <p>{{res.event.eventDescription}}</p>
+    </div>
+  </div>
+</div>
+<app-global-footer></app-global-footer>

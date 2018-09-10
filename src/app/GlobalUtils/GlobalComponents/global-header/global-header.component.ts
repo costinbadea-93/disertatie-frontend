@@ -9,7 +9,12 @@ import {Router} from '@angular/router';
 export class GlobalHeaderComponent implements OnInit {
 
   @Input() selected: string;
-  public menuItems  = ['Home', 'AboutUs'];
+  public menuItems  = [
+    {route: 'home', value: 'Home'},
+    // {route: 'bestRatedEvents', value: 'Best rated events'},
+    {route: 'contactUs', value: 'Contact us'},
+    {route: 'yourReservations', value: 'Your reservations'},
+  ];
   public currentRoute: String;
   public isAdmin = false;
   constructor(private router: Router) {}
@@ -29,6 +34,11 @@ export class GlobalHeaderComponent implements OnInit {
 
   ngOnInit() {
     this.currentRoute = this.router.url.slice(1);
+  }
+
+  logutUser() {
+    sessionStorage.removeItem('userInfo');
+    this.router.navigate(['/']);
   }
 
 }

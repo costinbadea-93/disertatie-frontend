@@ -56,4 +56,15 @@ export class AdminDashboardService {
 
     return event;
   }
+
+  deleteEvent(eventId: number):  Observable <any>  {
+    const url = Constants.DELETE_EVENT + '/' + eventId;
+    return this.http.delete(url, {headers: this.globalServiceRequest.createAuthorizationHeader()});
+  }
+
+  updateEvent(event: EventModel):  Observable <any>  {
+    const url = Constants.UPDATE_EVENT + '?locationId=' + event.eventLocation.id;
+    return this.http.post(url, event, {headers: this.globalServiceRequest.createAuthorizationHeader()});
+  }
+
 }

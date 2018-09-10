@@ -1,0 +1,13 @@
+<div class="tm-gallery no-pad-b">
+  <div class="row">
+    <figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item mb-5" *ngFor="let topEvent of topRatedEvents">
+      <a  (click)="goToEventById(topEvent.id)">
+        <div class="tm-gallery-item-overlay">
+          <img src="../assets/img/image_top_rated.png" alt="Image" class="img-fluid tm-img-center">
+        </div>
+        <h5 class="tm-figcaption no-pad-b">{{topEvent.eventName}}</h5>
+      </a>
+      <p class="tm-figcaption no-pad-b">{{topEvent.eventDescription}}</p>
+    </figure>
+  </div>
+</div>

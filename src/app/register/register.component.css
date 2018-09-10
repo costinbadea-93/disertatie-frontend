@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 body {
+  /*height: -webkit-fill-available;*/
   font-family: 'Open Sans', sans-serif;
   background-image: url("../GlobalUtils/Images/background_login.jpg") !important;
   background-size: cover;

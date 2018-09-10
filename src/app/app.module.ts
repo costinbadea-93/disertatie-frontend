@@ -28,6 +28,10 @@ import {AdminDashboardService} from './AadminEventsModule/admin-dashboard/Servic
 import { GlobalFooterComponent } from './GlobalUtils/GlobalComponents/global-footer/global-footer.component';
 import { RegisterComponent } from './register/register.component';
 import { ReviewComponentComponent } from './GlobalUtils/GlobalComponents/review-component/review-component.component';
+import { ReservationsComponent } from './best-rated-events/reservations.component';
+import {ReservationsService} from './best-rated-events/Services/ReservationsService';
+import { TopRatedEventsComponent } from './top-rated-events/top-rated-events.component';
+import {TopRatedEventsService} from './top-rated-events/Services/TopRatedEventsService';
 
 
 const appRoutes: Routes = [
@@ -36,6 +40,7 @@ const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'eventDetails/:id', component: EventDetailsComponent},
   {path: 'admin', component: AdminDashboardComponent},
+  {path: 'yourReservations', component: ReservationsComponent},
   {path: '**', component: LoginComponent},
 ];
 
@@ -56,6 +61,8 @@ const appRoutes: Routes = [
     GlobalFooterComponent,
     RegisterComponent,
     ReviewComponentComponent,
+    ReservationsComponent,
+    TopRatedEventsComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +82,13 @@ const appRoutes: Routes = [
       })
   ],
   exports: [],
-  providers: [UserService, HomeService, EventDetailsService, GlobalServiceRequests, AdminDashboardService],
+  providers: [UserService,
+    HomeService,
+    EventDetailsService,
+    GlobalServiceRequests,
+    AdminDashboardService,
+    ReservationsService,
+    TopRatedEventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

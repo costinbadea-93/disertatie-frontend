@@ -1,4 +1,4 @@
-<!-- Page Content -->
+<app-global-header></app-global-header>
 <div class="container">
 
   <!-- Page Heading -->
@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-md-7">
       <a href="">
-        <img class="img-fluid rounded mb-3 mb-md-0" src="../../../assets/img/bg1.jpg" alt="">
+        <img class="img-fluid rounded mb-3 mb-md-0 customImage" src="../../../assets/img/location.jpg" alt="">
       </a>
     </div>
     <div class="col-md-5">
@@ -22,17 +22,47 @@
   <div class="row">
     <div class="col-md-7">
       <a href="">
-        <img class="img-fluid rounded mb-3 mb-md-0" src="../../../assets/img/bg.jpg" alt="">
+        <img class="img-fluid rounded mb-3 mb-md-0 customImage" src="../../../assets/img/bg.jpg" alt="">
       </a>
     </div>
     <div class="col-md-5">
       <h3>Add Event</h3>
       <p>Here you can add new events in your application in order to be available for users.</p>
-      <app-add-events-modal></app-add-events-modal>
+      <app-add-events-modal  (updateEvents)="updateEmitedData($event)"></app-add-events-modal>
     </div>
   </div>
   <!-- /.row -->
 </div>
-<br><br><hr>
-
-
+<hr>
+<div id="table" class="table-editable">
+  <table class="table table-bordered table-responsive-md table-striped text-center">
+    <tr>
+      <th class="text-center">Event name</th>
+      <th class="text-center">Event category</th>
+      <th class="text-center">Event description</th>
+      <th class="text-center">Free places</th>
+      <th class="text-center">Star time</th>
+      <th class="text-center">Location</th>
+      <th class="text-center">Update</th>
+      <th class="text-center">Remove</th>
+    </tr>
+    <tr *ngFor="let event of events" #changeEditableTaleRow>
+      <td class="pt-3-half"><input type="text"  readonly value={{event.eventName}}/></td>
+      <td class="pt-3-half"><input type="text"  readonly value={{event.category}}/></td>
+      <td class="pt-3-half"><input type="text"  readonly value={{event.eventDescription}}/></td>
+      <td class="pt-3-half"><input type="text"  readonly value={{event.freePlacesNumber}}/></td>
+      <td class="pt-3-half"><input type="text"  readonly value={{event.startTime}}/></td>
+      <td class="pt-3-half"><input type="text"  readonly value={{event.eventLocation.locationAddress}}/></td>
+      <td class="pt-3-half">
+        <span class="table-remove" (click)="changeEditable(changeEditableTaleRow)"><button type="button" class="btn btn-primary btn-rounded btn-sm my-0">Edit</button></span>
+        <span class="table-remove" (click)="updateEvent(event, changeEditableTaleRow)"> <button type="button" class="btn btn-success btn-rounded btn-sm my-0">Update</button></span>
+      </td>
+      <td>
+        <span class="table-remove" (click)="deleteEvent(event.id)"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+      </td>
+    </tr>
+  </table>
+  <app-error-component [errorObject]="errorOnDeleteEvent"></app-error-component>
+  <app-error-component [errorObject]="errorOnUpdateEvent"></app-error-component>
+</div>
+<app-global-footer></app-global-footer>

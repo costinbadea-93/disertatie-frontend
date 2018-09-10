@@ -2,6 +2,7 @@ import {DatepickerOptions} from 'ng2-datepicker';
 
 export class Constants {
   public static get GET_EVENTS_URL(): string { return 'http://localhost:9000/event/getEvents'; }
+  public static get GET_TOP_RATED(): string { return 'http://localhost:9000/event/getTopRatedEvents'; }
   public static get AUTH_TOKEN_URL(): string { return 'http://localhost:9000/users/signin'; }
   public static get GET_SPECIFIC_EVENT_URL(): string { return 'http://localhost:9000/event/getEvent'; }
   public static get APPLY_ON_SPECIFIC_EVENT(): string { return 'http://localhost:9000/eventReservation/addEventReservation'; }
@@ -9,11 +10,14 @@ export class Constants {
   public static get RATE_EVENT(): string { return 'http://localhost:9000/event/rateEvent'; }
   public static get ADD_LOCATION(): string { return 'http://localhost:9000/eventLocation/addEventLocation'; }
   public static get ADD_EVENT(): string { return 'http://localhost:9000/event/addEvent'; }
+  public static get UPDATE_EVENT(): string { return 'http://localhost:9000/event/updateEvent'; }
+  public static get DELETE_EVENT(): string { return 'http://localhost:9000/event/deleteEvent'; }
   public static get GET_LOCATIONS(): string { return 'http://localhost:9000/eventLocation/getLocations'; }
   public static get REGISTER_USER(): string { return 'http://localhost:9000/users/signup'; }
   public static get EVENT_REVIEWS(): string { return 'http://localhost:9000/event/getReviews'; }
   public static get ADD_REVIEWS(): string { return 'http://localhost:9000/event/addReview'; }
   public static get DELETE_REVIEW(): string { return 'http://localhost:9000/event/deleteReview'; }
+  public static get GET_RESERVATIONS(): string { return 'http://localhost:9000/eventReservation/getReservations'; }
 
   public static get DATEPICKER_OPTIONS(): DatepickerOptions {
     const yesterday = new Date();
