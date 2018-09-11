@@ -62,7 +62,7 @@ export class EventDetailsComponent implements OnInit {
     console.log(this.eventReservation);
     this.eventDetailsService.applyOnEvent(userId, event.id, this.eventReservation).subscribe(
       result => {
-        console.log(result);
+        this.event.freePlacesNumber = this.event.freePlacesNumber - this.eventReservation.numberOfReservedPlaces;
     }, error => {
         this.globalService.validateRequestTokenExpired(error);
         this.errorOnApply = this.globalService.distplayErrorObject( error.error, true, error.status, 'alert-warning');

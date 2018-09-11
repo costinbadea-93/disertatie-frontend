@@ -11,7 +11,6 @@ export class GlobalHeaderComponent implements OnInit {
   @Input() selected: string;
   public menuItems  = [
     {route: 'home', value: 'Home'},
-    // {route: 'bestRatedEvents', value: 'Best rated events'},
     {route: 'contactUs', value: 'Contact us'},
     {route: 'yourReservations', value: 'Your reservations'},
   ];

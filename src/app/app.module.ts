@@ -32,15 +32,18 @@ import { ReservationsComponent } from './best-rated-events/reservations.componen
 import {ReservationsService} from './best-rated-events/Services/ReservationsService';
 import { TopRatedEventsComponent } from './top-rated-events/top-rated-events.component';
 import {TopRatedEventsService} from './top-rated-events/Services/TopRatedEventsService';
+import { ContactUsComponentComponent } from './contact-us-component/contact-us-component.component';
+import {AuthGuardService} from './GlobalUtils/GlobalServices/RoutingGuard';
 
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'eventDetails/:id', component: EventDetailsComponent},
-  {path: 'admin', component: AdminDashboardComponent},
-  {path: 'yourReservations', component: ReservationsComponent},
+  {path: 'register', component: RegisterComponent, canActivate: [AuthGuardService] },
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
+  {path: 'contactUs', component: ContactUsComponentComponent, canActivate: [AuthGuardService]},
+  {path: 'eventDetails/:id', component: EventDetailsComponent, canActivate: [AuthGuardService]},
+  {path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuardService]},
+  {path: 'yourReservations', component: ReservationsComponent, canActivate: [AuthGuardService]},
   {path: '**', component: LoginComponent},
 ];
 
@@ -63,6 +66,7 @@ const appRoutes: Routes = [
     ReviewComponentComponent,
     ReservationsComponent,
     TopRatedEventsComponent,
+    ContactUsComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,7 +92,8 @@ const appRoutes: Routes = [
     GlobalServiceRequests,
     AdminDashboardService,
     ReservationsService,
-    TopRatedEventsService],
+    TopRatedEventsService,
+    AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

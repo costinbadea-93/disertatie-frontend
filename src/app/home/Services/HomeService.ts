@@ -19,4 +19,9 @@ export class HomeService {
     const url = Constants.GET_EVENTS_URL;
       return this.http.get<EventModel[]>(url, {headers: this.globalServiceRequest.createAuthorizationHeader()});
   }
+
+  contactAdmin(name: string, email: string, message: string): Observable <string> {
+    const url = Constants.CONTACT_ADMIN  + '?name=' + name + '&email=' + email + '&text=' + message;
+    return this.http.post<string>(url, {},{headers: this.globalServiceRequest.createAuthorizationHeader()});
+  }
 }

@@ -18,6 +18,7 @@ export class Constants {
   public static get ADD_REVIEWS(): string { return 'http://localhost:9000/event/addReview'; }
   public static get DELETE_REVIEW(): string { return 'http://localhost:9000/event/deleteReview'; }
   public static get GET_RESERVATIONS(): string { return 'http://localhost:9000/eventReservation/getReservations'; }
+  public static get CONTACT_ADMIN(): string { return 'http://localhost:9000/event/contactAdmin'; }
 
   public static get DATEPICKER_OPTIONS(): DatepickerOptions {
     const yesterday = new Date();

@@ -9,7 +9,7 @@ import {EventReservationModel} from '../GlobalUtils/GlobalModel/eventReservation
 })
 export class ReservationsComponent implements OnInit {
 
-  public bestRatedEventsList : EventReservationModel[];
+  public bestRatedEventsList: EventReservationModel[];
 
   constructor(public bestRatedEventsService: ReservationsService) { }
 
