@@ -38,7 +38,6 @@
   <table class="table table-bordered table-responsive-md table-striped text-center">
     <tr>
       <th class="text-center">Event name</th>
-      <th class="text-center">Event category</th>
       <th class="text-center">Event description</th>
       <th class="text-center">Free places</th>
       <th class="text-center">Star time</th>
@@ -48,7 +47,6 @@
     </tr>
     <tr *ngFor="let event of events" #changeEditableTaleRow>
       <td class="pt-3-half"><input type="text"  readonly value={{event.eventName}}/></td>
-      <td class="pt-3-half"><input type="text"  readonly value={{event.category}}/></td>
       <td class="pt-3-half"><input type="text"  readonly value={{event.eventDescription}}/></td>
       <td class="pt-3-half"><input type="text"  readonly value={{event.freePlacesNumber}}/></td>
       <td class="pt-3-half"><input type="text"  readonly value={{event.startTime}}/></td>
@@ -64,5 +62,30 @@
   </table>
   <app-error-component [errorObject]="errorOnDeleteEvent"></app-error-component>
   <app-error-component [errorObject]="errorOnUpdateEvent"></app-error-component>
+</div>
+<hr>
+<div id="tableLocation" class="table-editable">
+  <table class="table table-bordered table-responsive-md table-striped text-center">
+    <tr>
+      <th class="text-center">Location address</th>
+      <th class="text-center">Latitude</th>
+      <th class="text-center">Longitude</th>
+      <th class="text-center">Update</th>
+      <th class="text-center">Remove</th>
+    </tr>
+    <tr *ngFor="let location of locations" #changeEditableTaleLocations>
+      <td class="pt-3-half"><input type="text"  readonly value={{location.locationAddress}}/></td>
+      <td class="pt-3-half"><input type="text"  readonly value={{location.latitudeValue}}/></td>
+      <td class="pt-3-half"><input type="text"  readonly value={{location.longitudeValue}}/></td>
+      <td class="pt-3-half">
+        <span class="table-remove" (click)="changeEditable(changeEditableTaleLocations)"><button type="button" class="btn btn-primary btn-rounded btn-sm my-0">Edit</button></span>
+        <span class="table-remove" (click)="updateLocation(location, changeEditableTaleLocations)"> <button type="button" class="btn btn-success btn-rounded btn-sm my-0">Update</button></span>
+      </td>
+      <td>
+        <span class="table-remove" (click)="deleteLocation(location.id)"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+      </td>
+    </tr>
+  </table>
+  <app-error-component [errorObject]="errorOnUpdateLocation"></app-error-component>
 </div>
 <app-global-footer></app-global-footer>

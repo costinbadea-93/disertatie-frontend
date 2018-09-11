@@ -67,4 +67,15 @@ export class AdminDashboardService {
     return this.http.post(url, event, {headers: this.globalServiceRequest.createAuthorizationHeader()});
   }
 
+  updateLocation(location: EventLocationModel):  Observable <any>  {
+    const url = Constants.ADD_LOCATION;
+    // const location: EventLocationModel = this.buildLocation(locationAddress, latitude, longitude);
+    return this.http.post(url, location, {headers: this.globalServiceRequest.createAuthorizationHeader()});
+  }
+
+  deleteLocation(locationId: number):  Observable <any>  {
+    const url = Constants.DELETE_LOCATION + '?eventLocationId=' + locationId;
+    return this.http.delete(url, {headers: this.globalServiceRequest.createAuthorizationHeader()});
+  }
+
 }

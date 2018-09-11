@@ -21,4 +21,9 @@ export class ReservationsService {
     const url = Constants.GET_RESERVATIONS + '/' + userId;
       return this.http.get<EventReservationModel[]>(url, {headers: this.globalServiceRequest.createAuthorizationHeader()});
   }
+
+  deleteReservation(eventReservationId: number):  Observable <any>  {
+    const url = Constants.DELETE_RESERVATION + '?eventReservationId=' + eventReservationId;
+    return this.http.delete(url, {headers: this.globalServiceRequest.createAuthorizationHeader()});
+  }
 }

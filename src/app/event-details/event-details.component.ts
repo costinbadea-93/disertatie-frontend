@@ -63,6 +63,7 @@ export class EventDetailsComponent implements OnInit {
     this.eventDetailsService.applyOnEvent(userId, event.id, this.eventReservation).subscribe(
       result => {
         this.event.freePlacesNumber = this.event.freePlacesNumber - this.eventReservation.numberOfReservedPlaces;
+        this.errorOnApply = this.globalService.distplayErrorObject('You have successfully applied', true, 400, 'alert-success');
     }, error => {
         this.globalService.validateRequestTokenExpired(error);
         this.errorOnApply = this.globalService.distplayErrorObject( error.error, true, error.status, 'alert-warning');

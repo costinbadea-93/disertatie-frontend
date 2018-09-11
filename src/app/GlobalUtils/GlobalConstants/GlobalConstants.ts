@@ -9,6 +9,7 @@ export class Constants {
   public static get GET_USER_INFO(): string { return 'http://localhost:9000/users/me'; }
   public static get RATE_EVENT(): string { return 'http://localhost:9000/event/rateEvent'; }
   public static get ADD_LOCATION(): string { return 'http://localhost:9000/eventLocation/addEventLocation'; }
+  public static get DELETE_LOCATION(): string { return 'http://localhost:9000/eventLocation/deleteEventLocation'; }
   public static get ADD_EVENT(): string { return 'http://localhost:9000/event/addEvent'; }
   public static get UPDATE_EVENT(): string { return 'http://localhost:9000/event/updateEvent'; }
   public static get DELETE_EVENT(): string { return 'http://localhost:9000/event/deleteEvent'; }
@@ -18,6 +19,7 @@ export class Constants {
   public static get ADD_REVIEWS(): string { return 'http://localhost:9000/event/addReview'; }
   public static get DELETE_REVIEW(): string { return 'http://localhost:9000/event/deleteReview'; }
   public static get GET_RESERVATIONS(): string { return 'http://localhost:9000/eventReservation/getReservations'; }
+  public static get DELETE_RESERVATION(): string { return 'http://localhost:9000/eventReservation/deleteEventReservation'; }
   public static get CONTACT_ADMIN(): string { return 'http://localhost:9000/event/contactAdmin'; }
 
   public static get DATEPICKER_OPTIONS(): DatepickerOptions {

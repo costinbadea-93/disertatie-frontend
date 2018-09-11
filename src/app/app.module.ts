@@ -38,7 +38,7 @@ import {AuthGuardService} from './GlobalUtils/GlobalServices/RoutingGuard';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent, canActivate: [AuthGuardService] },
+  {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
   {path: 'contactUs', component: ContactUsComponentComponent, canActivate: [AuthGuardService]},
   {path: 'eventDetails/:id', component: EventDetailsComponent, canActivate: [AuthGuardService]},

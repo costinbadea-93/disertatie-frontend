@@ -9,6 +9,7 @@
       <img class="rounded-circle img-fluid d-block mx-auto" src="http://www.bistro-le-cep.com/Content/images/Reservationimg.png" alt="">
       <h3>{{res.event.eventName}}</h3> <small>{{res.event.eventDate | date}}</small>
       <p>{{res.event.eventDescription}}</p>
+      <button class="btn btn-primary" (click)="deleteEventReservation(res.id)">Delete Reservation</button>
     </div>
   </div>
 </div>
